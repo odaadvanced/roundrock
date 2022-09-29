@@ -1,0 +1,58 @@
+GIT = Global Information Tracker
+- works with
+	Small projects
+	Large projects
+- speed and efficiency
+- free open source
+- distributed with the Rasperry Pi
+
+Our use of GIT
+- we will work with example programs
+- will store our work on GitHub
+
+New directory:
+:cd ~ 
+:mkdir Dev
+:cd Dev
+:mkdir RoundRock
+:cd RoundRock
+
+GIT
+:echo "# RoundRock" >> READMENathan_Fatiga.md
+:ls
+:git init
+:ls -al
+:git add READMENathan_Fatiga.md
+:ls
+:git status
+
+GIT
+:git config --global user.email stbaoda@gmail.com
+:git config -- global user.name "odaadvanced"
+:git commit -m "first commit"
+:git branch -M main
+:git remote add origin https://github.com/odaadvanced/roundrock.git
+
+GIT
+:git config --global credential.helper cache
+:git pull origin main --allow-unrelated-histories
+:CTRL+o; ENTER; CTRL+x; ENTER
+:git pull origin main --allow-unrelated-histories
+
+:git pull
+:git push -u origin main
+USERNAME:odaadvanced
+PASSWORD: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
+:git pull
+
+Make your own directory
+: mkdir <your_name>
+: echo "my first file">Nathan_Fatiga.txt
+: git status
+: git add Nathan_Fatiga.txt
+: git commit -m "this is my file"
+: git commit .
+: this is my file
+: git push
+
+Python 3.7.3
