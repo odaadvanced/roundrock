@@ -4,4 +4,4 @@ if total >= 5 and total <= 9:
 elif total == 3:
     print("very low number")
 else:
-    print("not bad!")
+    print("Not Bad!")
