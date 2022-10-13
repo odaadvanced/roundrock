@@ -1,0 +1,96 @@
+Python 3.7.3 (/usr/bin/python3)
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/power
+>>> %Run get_battery_state.py
+Checking RVR firmware versions...
+Checking CMS firmware versions...
+Firmware check done.
+Battery percentage:  {'percentage': 58}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/leds
+>>> %Run set_all_leds.py
+>>> %cd /home/pi/dev/roundrock/Evan
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving
+>>> %Run drive_raw_motors.py
+Traceback (most recent call last):
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_raw_motors.py", line 83, in <module>
+    main()
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_raw_motors.py", line 29, in main
+    right_duty_cycle=128  # Valid duty cycle range is 0-255
+TypeError: raw_motors() got an unexpected keyword argument 'left_duty_cycle'
+>>> %Run drive_raw_motors.py
+Traceback (most recent call last):
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_raw_motors.py", line 83, in <module>
+    main()
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_raw_motors.py", line 29, in main
+    right_duty_cycle=128  # Valid duty cycle range is 0-255
+TypeError: raw_motors() got an unexpected keyword argument 'left_duty_cycle'
+>>> %Run drive_tank_si.py
+Traceback (most recent call last):
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_tank_si.py", line 77, in <module>
+    main()
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_tank_si.py", line 26, in main
+    rvr.drive_tank_si_units(
+AttributeError: 'SpheroRvrObserver' object has no attribute 'drive_tank_si_units'
+>>> %Run drive_tank_si.py
+Traceback (most recent call last):
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_tank_si.py", line 77, in <module>
+    main()
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/driving/drive_tank_si.py", line 26, in main
+    rvr.drive_tank_si_units(
+AttributeError: 'SpheroRvrObserver' object has no attribute 'drive_tank_si_units'
+>>> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> "Evan".upper()
+'EVAN'
+>>> "Evan".lower()
+'evan'
+>>> %Run drive_with_heading.py
+>>> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> "Evan".__class__
+<class 'str'>
+>>> [1].__class__
+<class 'list'>
+>>> 12.34.__class__
+<class 'float'>
+>>> %cd /home/pi/dev/roundrock/Evan
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %cd /home/pi/Public/prog_pi_ed3
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+50mm
+>>> c2 = ScaleConverter('feet', 'yards', 0 .333)
+  File "<pyshell>", line 1
+    c2 = ScaleConverter('feet', 'yards', 0 .333)
+                                              ^
+SyntaxError: invalid syntax
+>>> c2 = ScaleConverter('feet', 'yards', 0.333)
+>>> print(str(c2.convert(3))) + c2.units_to
+0.9990000000000001
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+>>> print(str(c2.convert(3))) + c2.units_to)
+  File "<pyshell>", line 1
+    print(str(c2.convert(3))) + c2.units_to)
+                                           ^
+SyntaxError: invalid syntax
+>>> print(str(c2.convert(3)) + c2.units_to)
+0.9990000000000001yards
+>>> 
