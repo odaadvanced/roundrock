@@ -1,0 +1,147 @@
+Python 3.7.3 (/usr/bin/python3)
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/power
+>>> %Run get_battery_state.py
+Checking RVR firmware versions...
+Checking CMS firmware versions...
+Firmware check done.
+Battery percentage:  {'percentage': 76}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 74}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 74}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> 
+>>> 
+>>> 
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> s
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 's' is not defined
+>>> ss
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 'ss' is not defined
+>>> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run get_battery_state.py
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %FastDebug get_battery_state.py
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 74}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 74}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %Run get_battery_state.py
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 73}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/leds
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/power
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 72}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %cd /home/pi/dev/roundrock/joshua_lee
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> "joshua Lee" .upper()
+'JOSHUA LEE'
+>>> "joshua Lee".__class__
+<class 'str'>
+>>> "joshua Lee" .__class__
+<class 'str'>
+>>> [1] .__class__
+<class 'list'>
+>>> 12.34.__class__
+<class 'float'>
+>>> %cd /home/pi/Public/prog_pi_ed3
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+50mm
+>>> %Run 05_01_converter.py
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/ast.py", line 35, in parse
+    return compile(source, filename, mode, PyCF_ONLY_AST)
+  File "/home/pi/Public/prog_pi_ed3/05_01_converter.py", line 5
+    self.units_from = units_from
+                               ^
+TabError: inconsistent use of tabs and spaces in indentation
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+50mm
+>>> c2 = ScaleConverter('feet', 'yards', 0.333)
+>>> print(str(c2.convert(3)) + c2.units_to)
+0.9990000000000001yards
+>>> print(str(c2.convert(10)) + c2.units_to)
+3.33yards
+>>> 
