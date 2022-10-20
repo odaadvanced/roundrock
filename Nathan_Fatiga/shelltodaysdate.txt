@@ -1,0 +1,284 @@
+Python 3.7.3 (/usr/bin/python3)
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/power
+>>> %Run get_battery_state.py
+Checking RVR firmware versions...
+Checking CMS firmware versions...
+Firmware check done.
+Battery percentage:  {'percentage': 24}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> import sphero_sdk
+>>> from sphero_sdk import 8
+  File "<pyshell>", line 1
+    from sphero_sdk import 8
+                           ^
+SyntaxError: invalid syntax
+>>> from sphero_sdk import *
+>>> Colors
+<enum 'Colors'>
+>>> Colors("red")
+ValueError: 'red' is not a valid Colors
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+  File "/usr/lib/python3.7/enum.py", line 310, in __call__
+    return cls.__new__(cls, value)
+  File "/usr/lib/python3.7/enum.py", line 564, in __new__
+    raise exc
+  File "/usr/lib/python3.7/enum.py", line 548, in __new__
+    result = cls._missing_(value)
+  File "/usr/lib/python3.7/enum.py", line 577, in _missing_
+    raise ValueError("%r is not a valid %s" % (value, cls.__name__))
+ValueError: 'red' is not a valid Colors
+>>> set_all_leds("Red")
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: set_all_leds() missing 3 required positional arguments: 'led_brightness_values', 'target', and 'timeout'
+>>> set_all_leds
+<function set_all_leds at 0xb5161e88>
+>>> set_all_leds()
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: set_all_leds() missing 4 required positional arguments: 'led_group', 'led_brightness_values', 'target', and 'timeout'
+>>> set_all_leds(1)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: set_all_leds() missing 3 required positional arguments: 'led_brightness_values', 'target', and 'timeout'
+>>> help(Colors)
+Help on class Colors in module sphero_sdk.common.enums.colors_enums:
+
+class Colors(enum.Enum)
+ |  Colors(value, names=None, *, module=None, qualname=None, type=None, start=1)
+ |  
+ |  An enumeration.
+ |  
+ |  Method resolution order:
+ |      Colors
+ |      enum.Enum
+ |      builtins.object
+ |  
+ |  Data and other attributes defined here:
+ |  
+ |  blue = <Colors.blue: [0, 0, 255]>
+ |  
+ |  green = <Colors.green: [0, 255, 0]>
+ |  
+ |  off = <Colors.off: [0, 0, 0]>
+ |  
+ |  orange = <Colors.orange: [255, 32, 0]>
+ |  
+ |  pink = <Colors.pink: [255, 102, 178]>
+ |  
+ |  purple = <Colors.purple: [255, 0, 255]>
+ |  
+ |  red = <Colors.red: [255, 0, 0]>
+ |  
+ |  white = <Colors.white: [255, 255, 255]>
+ |  
+ |  yellow = <Colors.yellow: [255, 144, 0]>
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from enum.Enum:
+ |  
+ |  name
+ |      The name of the Enum member.
+ |  
+ |  value
+ |      The value of the Enum member.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from enum.EnumMeta:
+ |  
+ |  __members__
+ |      Returns a mapping of member name->value.
+ |      
+ |      This mapping lists all enum members, including aliases. Note that this
+ |      is a read-only view of the internal mapping.
+
+>>> Colors.Red
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+  File "/usr/lib/python3.7/enum.py", line 349, in __getattr__
+    raise AttributeError(name) from None
+AttributeError: Red
+>>> Colors()
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: __call__() missing 1 required positional argument: 'value'
+>>> Colors(Red)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 'Red' is not defined
+>>> Colors[255, 0, 0]
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+  File "/usr/lib/python3.7/enum.py", line 352, in __getitem__
+    return cls._member_map_[name]
+KeyError: (255, 0, 0)
+>>> Colors([255, 0, 0])
+<Colors.red: [255, 0, 0]>
+>>> set_all_leds(Colors)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: set_all_leds() missing 3 required positional arguments: 'led_brightness_values', 'target', and 'timeout'
+>>> set_all_leds(Colors, 1, 1, 10)
+{'did': <DevicesEnum.io: 26>, 'cid': <CommandsEnum.set_all_leds: 26>, 'seq': 6, 'target': 1, 'timeout': 10, 'inputs': [<sphero_sdk.common.parameter.Parameter object at 0xb5c8c630>, <sphero_sdk.common.parameter.Parameter object at 0xb48065d0>]}
+>>> set_all_leds(Colors, 1, , 200)
+  File "<pyshell>", line 1
+    set_all_leds(Colors, 1, , 200)
+                            ^
+SyntaxError: invalid syntax
+>>> set_all_leds(Colors, 1, 200)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: set_all_leds() missing 1 required positional argument: 'timeout'
+>>> set_all_leds(Colors, 1, 1, 200)
+{'did': <DevicesEnum.io: 26>, 'cid': <CommandsEnum.set_all_leds: 26>, 'seq': 7, 'target': 1, 'timeout': 200, 'inputs': [<sphero_sdk.common.parameter.Parameter object at 0xb5b26ae0>, <sphero_sdk.common.parameter.Parameter object at 0xb4806270>]}
+>>> set_all_leds(Colors, 1, Top, 200)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 'Top' is not defined
+>>> set_all_leds(Colors, 1, "Top", 200)
+{'did': <DevicesEnum.io: 26>, 'cid': <CommandsEnum.set_all_leds: 26>, 'seq': 8, 'target': 'Top', 'timeout': 200, 'inputs': [<sphero_sdk.common.parameter.Parameter object at 0xb48cc840>, <sphero_sdk.common.parameter.Parameter object at 0xb4806210>]}
+>>> set_all_leds(Colors, 1, "Front", 200)
+{'did': <DevicesEnum.io: 26>, 'cid': <CommandsEnum.set_all_leds: 26>, 'seq': 9, 'target': 'Front', 'timeout': 200, 'inputs': [<sphero_sdk.common.parameter.Parameter object at 0xb48b1f60>, <sphero_sdk.common.parameter.Parameter object at 0xb4806060>]}
+>>> quit
+Use quit() or Ctrl-D (i.e. EOF) to exit
+>>> quit()
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> quit()
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run get_battery_state.py
+Battery percentage:  {'percentage': 23}
+Voltage state:  {'state': 1}
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+>>> %cd /home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/leds
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+Traceback (most recent call last):
+  File "/home/pi/sphero-sdk-raspberrypi-python/getting_started/observer/leds/set_all_leds.py", line 35
+    led_brightness_values=[color for _ in range(10) for color in [0, 0, 255]]
+                        ^
+SyntaxError: invalid syntax
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds_with_helper.py
+>>> %Run set_all_leds.py
+>>> %Run set_all_leds.py
+>>> %cd /home/pi/Dev/RoundRock/Nathan_Fatiga
+>>> %Run 'MY LEDSS.py'
+>>> %Run 'MY LEDSS.py'
+Traceback (most recent call last):
+  File "/home/pi/Dev/RoundRock/Nathan_Fatiga/MY LEDSS.py", line 49, in <module>
+    main()
+  File "/home/pi/Dev/RoundRock/Nathan_Fatiga/MY LEDSS.py", line 24, in main
+    while true:
+NameError: name 'true' is not defined
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> %Run 'MY LEDSS.py'
+
+
+quit()
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Python 3.7.3 (/usr/bin/python3)
+>>> "Nathan Fatiga".upper()
+'NATHAN FATIGA'
+>>> "Nathan Fatiga".lower()
+'nathan fatiga'
+>>> "Nathan Fatiga".__class__
+<class 'str'>
+>>> var("Nathan Fatiga")
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+NameError: name 'var' is not defined
+>>> [1].__class__
+<class 'list'>
+>>> [1, 2, 3].__class__
+<class 'list'>
+>>> 12.34.__class__
+<class 'float'>
+>>> 1.__class__
+  File "<pyshell>", line 1
+    1.__class__
+              ^
+SyntaxError: invalid syntax
+>>> (1).__class__
+<class 'int'>
+>>> Open o5_01_conveter.py
+  File "<pyshell>", line 1
+    Open o5_01_conveter.py
+                      ^
+SyntaxError: invalid syntax
+>>> %cd /home/pi/Public/prog_pi_ed3
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+50mm
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+2500000585525mm
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+2500000585547293995542232818522821837548375mm
+>>> %Run 05_01_converter.py
+Convert inches to mm
+converting 2 inches
+2500000585547293995542232818522821837548399543310229568377282183901195975455935246627345686274559102396807737188023450mm
+>>> c2 = ScaleConverter("feet", "yards", 0.333)
+>>> c2(30, 30)
+Traceback (most recent call last):
+  File "<pyshell>", line 1, in <module>
+TypeError: 'ScaleConverter' object is not callable
+>>> print(str(c2.convert(3)) + c2.units_to)
+0.9990000000000001yards
+>>> c2 = ScaleConverter("feet", "yards", (1/3))
+>>> print(str(c2.convert(3)) + c2.units_to)
+1.0yards
+>>> print(str(c2.convert(201928734012)) + c2.units_to)
+67309578004.0yards
+>>> print(str(c2.convert(3)) + c2.units_to)
+1.0yards
+>>> c2 = ScaleConverter("feet", "yards", (1/3))
+>>> print(str(c2.convert(3)) + c2.units_to)
+1.0yards
+>>> 
