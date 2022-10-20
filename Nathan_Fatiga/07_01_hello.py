@@ -2,6 +2,6 @@
 
 from guizero import App, Text
 
-app = App()
-Text(app, text="Hello World")
+app = App(bg="Crimson")
+Text(app, text="Nathan Fatiga\nHELLO!")
 app.display()
