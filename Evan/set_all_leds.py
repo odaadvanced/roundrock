@@ -31,7 +31,7 @@ def main():
 
         rvr.set_all_leds(
             led_group=RvrLedGroups.all_lights.value,
-            led_brightness_values=[color for _ in range(10) for color in [86, 0, 255]]
+            led_brightness_values=[color for _ in range(10) for color in [96, 0, 158]]
         )
 
         # Delay to show LEDs change
