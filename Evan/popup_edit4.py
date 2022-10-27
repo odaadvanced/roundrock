@@ -4,9 +4,9 @@ from guizero import *
 
 def ask():
     if yesno("Question", "Would you like to money?"):
-        info("Result", "Then go get a job")
+        info("Result", "Then go get to www.scam.com")
     else:
-        info("Result", "Really?")
+        info("Result", "Then no money for you")
 
 app = App()
 button = PushButton(app, text="Click Me", command=ask)
