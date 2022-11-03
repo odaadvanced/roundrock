@@ -3,7 +3,7 @@
 from guizero import *
 from converters import ScaleAndOffsetConverter
 
-c_to_f_conv = ScaleAndOffsetConverter('C', 'K', 1.8, -273.15)
+c_to_k_conv = ScaleAndOffsetConverter('C', 'K', 1.8, -273.15)
 
 def convert():
     c = float(degCfield.value)
