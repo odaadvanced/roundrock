@@ -4,7 +4,7 @@ from gpiozero import RGBLED
 from guizero import App, Slider, Text
 from colorzero import Color
 
-rgb_led = RGBLED(18, 23, 24)
+rgb_led = RGBLED(18, 21, 24)
 
 red = 0
 green = 0
