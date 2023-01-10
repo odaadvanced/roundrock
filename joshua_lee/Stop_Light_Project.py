@@ -1,21 +1,38 @@
-from gpiozero import LED
 from gpiozero import TrafficLights
 from time import sleep
+from gpiozero import Button
+from gpiozero import DigitalOutputDevice
+import adafruit_ssd1306
+
 
 lights = TrafficLights(22, 27, 17)
 
-lights.green.on()
+button = Button(5)
+
+bz = DigitalOutputDevice(25)
+
+bz.on()
+
+lights.red.on()
 
 while True:
-    sleep(10)
-    lights.green.off()
-    lights.amber.on()
-    sleep(1)
-    lights.amber.off()
-    lights.red.on()
-    sleep(10)
-    lights.amber.on()
-    sleep(1)
-    lights.green.on()
-    lights.amber.off()
-    lights.red.off()
+    if button.is_pressed:
+        sleep(15)
+        while lights.red.on():
+            bz.on(0.5)
+            sleep(0.5)
+            bz.toggle()
+        lights.red.off()
+        lights.green.on()
+        print ("MAY CROSS")
+        sleep(15)
+        lights.amber.on()
+        lights.green.off()
+        print ("DO NOT CROSS")
+        sleep(3)
+        lights.green.off()
+        lights.amber.off()
+        lights.red.on()
+    else:
+        print("DO NOT CROSS")
+        
