@@ -3,8 +3,6 @@ import digitalio
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
 
-oled = Oled.io
-
 class Oled_io:
     # Use for I2C.
     def __init__ (self, WIDTH=128, HEIGHT = 64, BORDER = 5) :
