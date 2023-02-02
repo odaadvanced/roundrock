@@ -3,7 +3,6 @@ import digitalio
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
 
-
 class Oled_io:
     # Use for I2C.
     def __init__ (self, WIDTH=128, HEIGHT = 64, BORDER = 5) :
@@ -39,7 +38,7 @@ class Oled_io:
             fill=0,
         )
         if self.colon == True :
-            text = text.replace(':', ' ')
+            text = text.replace('', ' ')
             
         (font_width, font_height) = self.font.getsize(text)
         self.draw.text(

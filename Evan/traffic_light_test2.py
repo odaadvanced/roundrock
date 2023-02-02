@@ -1,3 +1,4 @@
+import gpiozero
 from gpiozero import LED
 from time import sleep
 
@@ -6,21 +7,21 @@ green = LED(21)
 amber = LED(26)
 red = LED(17)
 
-green.on()
+green.off()
 amber.off()
-red.off()
+red.on()
 
 while True:
-    sleep(10)
-    green.off()
-    amber.on()
-    sleep(1)
-    amber.off()
-    red.on()
-    sleep(10)
-    amber.on()
-    sleep(1)
-    green.on()
-    amber.off()
-    red.off()
-    
+    if crossbutton.is_pressed:
+        sleep(5)
+        amber.on()
+        red.off()
+        sleep(3)
+        amber.off()
+        green.on()
+        sleep(15)
+        green.off()
+        amber.on()
+        sleep(3)
+        amber.off()
+        red.on()
