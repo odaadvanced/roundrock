@@ -6,6 +6,8 @@ import asyncio
 from sphero_sdk import SpheroRvrAsync
 from sphero_sdk import SerialAsyncDal
 import time
+from gpiozero import DigitalOutputDevice
+from PiAnalog import *
 
 GPIO.setwarnings(False)
 
@@ -21,6 +23,9 @@ right_trigger = 20
 right_echo = 21
 left_trigger = 23
 left_echo = 24
+buzz1 = DigitalOutputDevice(5)
+buzz2 = DigitalOutputDevice(6)
+p = PiAnalog()
 
 GPIO.setup(left_trigger, GPIO.OUT)
 GPIO.setup(left_echo, GPIO.IN)
@@ -69,6 +74,28 @@ def distance_right():
     return distance
 
 
+def buzz(pitch, duration):
+    period = 1.0 / pitch
+    p2 = period / 2
+    cycles = int(duration * pitch)
+    print (cycles)
+    for i in range(0, cycles):
+        print ("i = " + str(i))
+        buzz1.on()
+        buzz2.off()
+        delay(p2)
+        buzz1.off()
+        buzz2.on()
+        delay(p2)
+        
+        
+def delay(p):
+    t0 = time.time()
+    while time.time() < t0 + p:
+        pass
+    
+
+
 async def main():
     await rvr.wake()
     await rvr.reset_yaw()
@@ -83,6 +110,7 @@ async def main():
                 await rvr.raw_motors(2,255,1,255)
                 dist_r = distance_right()
                 await asyncio.sleep(.05)
+                buzz(2000, 0.5)
                 print('turning right')
             await rvr.reset_yaw()
         elif dist_l < 35:
@@ -90,6 +118,7 @@ async def main():
                 await rvr.raw_motors(1,255,2,255)
                 dist_l = distance_left()
                 await asyncio.sleep(.05)
+                buzz(2000, 0.5)
                 print('turning left')
             await rvr.reset_yaw()
         elif dist_l >= 35 and dist_r >= 35:
