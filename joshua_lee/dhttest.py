@@ -9,9 +9,7 @@ GPIO.cleanup()
 
 # read data using pin 14
 while True:
-
     instance = dht11.DHT11(pin = 17)
-
     result = instance.read()
 
     if result.is_valid():
