@@ -1,33 +1,26 @@
 #!/usr/bin/env python3
+import os
+import sys
 import RPi.GPIO as GPIO
 from picamera import PiCamera
-import RPi.GPIO as GPIO
 import time
+from oled_io import Oled_io
+from sphero_sdk import SpheroRvrObserver
+from sphero_sdk import DriveFlagsBitmask
+import random
 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
+
+rvr = SpheroRvrObserver()
+display = Oled_io()
 camera = PiCamera()
-ObstaclePin = 17
+ObstaclePin = 5
 dhtPin = 17
-
-
-def setup():
-    camera.start_preview(alpha=200)
-
-def main():
-    camera.capture('/home/pi/my_photo.jpg')
-    while True:
-        pass
 
 def destroy():
     camera.stop_preview()
 
-if __name__ == '__main__':
-    setup()
-    try:
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        destroy()    
 
 GPIO.setmode(GPIO.BCM)
 
@@ -96,6 +89,7 @@ def readDht11():
                 state = STATE_DATA_PULL_UP
             else:
                 continue
+            
     if len(lengths) != 40:
         #print ("Data not good, skip")
         return False
@@ -139,24 +133,63 @@ def main():
             print ("humidity: %s %%,  Temperature: %s ℃" % (humidity, temperature))
         time.sleep(1)
 
-def destroy():
-    GPIO.cleanup()
-
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        destroy()
         
 def setup():
+   
+   global direction
+   direction = 0
+   
+   rvr.wake()
+   
+   time.sleep(2)
+
+   rvr.reset_yaw()
+  
    GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
    GPIO.setup(ObstaclePin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+   camera.start_preview(alpha=200)
+
+   camera.capture('/home/pi/my_photo.jpg')
 
 def loop():
+   global direction
    while True:
+      result = readDht11()
+      if result:
+            humidity, temperature = result
+            print ("humidity: %s %%,  Temperature: %s ℃" % (humidity, temperature))
+            if temperature > 23:
+                display.print(str("Done!"))
+                destroy()
+            if humidity > 70:
+                display.print(str("Done!"))
+                destroy()
+
+
       if (0 == GPIO.input(ObstaclePin)):
-         print ("Detected Barrier!")
-                        time.sleep(1)
+         
+             
+         display.print(str("Danger!"))
+         direction = direction + 90
+         if direction >= 359:
+             direction = 0
+         
+         rvr.drive_with_heading(
+            speed=10,  # Valid speed values are 0-255
+            heading =direction,  # Valid heading values are 0-359
+            flags=DriveFlagsBitmask.none.value
+        )   
+         
+      else:
+          display.print(str(" "))
+         
+          rvr.drive_with_heading(
+            speed=25,  # Valid speed values are 0-255
+            heading=direction,  # Valid heading values are 0-359
+            flags=DriveFlagsBitmask.none.value
+          )   
+         
+      time.sleep(1)
 
 
 def destroy():
